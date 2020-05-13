@@ -1,0 +1,64 @@
+{% extends 'faculty/basic.html' %}
+{% block title %} Student {% endblock%}
+
+{%block body %}
+<div class="container-fluid">
+  <div class="row">
+            <div class="col-4" style="background-color: darkslategrey ;padding-top: 15px;">
+                <input style="float: left;" class="btn-outline-secondary" style="border-radius: 20px;padding: 5px;"  type="button" value="Back" onclick="history.back()"/> 
+            </div>
+            <div class="col-3" style="background-color: darkslategrey ;text-align: center;"><br>
+              
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+              <a href="facultypage" title="Home" class="text-light" style="float: left;"><i title="HOME" class="fa fa-home fa-2x"></i></a>
+            </div>
+          </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a href="viewProfile" class="text-light" style="float: right;"><i  title="ViewProfile" class="fa fa-user fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="col-2" style="background-color: darkslategrey ;text-align: center;">
+                <br>
+                <h2 style="font-size: 2vw">Date: <span id="datetime"></span></h2>
+
+                <script>
+                    var dt = new Date();
+                    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+                </script>
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a class="mytext" href="facultylogout"  title="Logout"><i class="fa fa-sign-out fa-2x"></i></a>
+              </div>
+            </div>
+        </div>
+</div>
+
+<div class="container shadow-lg" style="border-radius: 20px;margin-top: 100px;margin-bottom: 100px;padding: 50px;">
+  <h1 style="text-align: center;border-bottom: 2px solid blueviolet;">ALL AVAILABLE PAPERS</h1><br><br><br>
+<form class="was-validated" action="seeQuestionPaper" method="POST">
+    {% csrf_token %}
+  {% for obj in paperID %}
+  
+    
+    <div class="custom-control custom-radio" style="margin-bottom: 10px;margin-top: 10px;padding: 10px;left: 10%;font-size: 20px;">
+      <input  value="{{obj}}" type="radio" class="custom-control-input" id="{{forloop.counter}}" name="paperID" required>
+      <label class="custom-control-label" for="{{forloop.counter}}">{{obj}}</label>
+    </div>
+    
+   
+    
+      {% endfor %} 
+
+      
+  
+      <button type="submit" style="border-radius: 10px;margin-top: 50px;" class="btn btn-block btn-outline-primary">Submit</button>
+      <input class="btn-block btn-outline-secondary" style="border-radius: 10px;padding: 5px; margin-top: 20px;"  type="button" value="Back" onclick="history.back()"/> 
+  </form>
+</div>
+
+
+{% endblock%}

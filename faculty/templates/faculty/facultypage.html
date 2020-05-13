@@ -1,0 +1,150 @@
+{% extends 'faculty/basic.html' %}
+{% block title %} faculty {% endblock%}
+
+{%block body %}
+
+
+
+<html>
+  <div class="container-fluid">
+        <div class="row">
+            <div class="col-4" style="background-color: darkslategrey ;padding-top: 15px;">
+                <img title="Logo" style="width: 7%;" src="https://softwaresuggest.imgix.net/software_logo/1495539705_followclass-192_mid.png" alt=""><br>
+            </div>
+            <div class="col-3" style="background-color: darkslategrey ;text-align: center;"><br>
+              
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+              <a href="facultypage" title="Home" class="text-light" style="float: left;"><i title="HOME" class="fa fa-home fa-2x"></i></a>
+            </div>
+          </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a href="viewProfile" class="text-light" style="float: right;"><i  title="ViewProfile" class="fa fa-user fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="col-2" style="background-color: darkslategrey ;text-align: center;">
+                <br>
+                <h2 style="font-size: 2vw">Date: <span id="datetime"></span></h2>
+
+                <script>
+                    var dt = new Date();
+                    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+                </script>
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a class="mytext" href="facultylogout"  title="Logout"><i class="fa fa-sign-out fa-2x"></i></a>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="container shadow" style="border-top-left-radius: 30px;border-top-right-radius: 30px; background-color: khaki;margin-top: 50px;">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" style="text-align: center;">
+                <br>
+                <br>
+                {% if profile.profilePic %}
+                  <img title="Profile Photo" class="rounded-circle" src="{{ profile.profilePic.url }}" width="70%" height="70%"><br><br>
+                {% else %}
+                  <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="default" width="300" height="300"><br><br>
+                {% endif %}
+                <p style="font-size: 1vw;">Name: {{profile.name}} </p><br>
+                <br><br><br>
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+
+    <div class="container shadow" style="border-bottom-left-radius: 30px;border-bottom-right-radius: 30px; background-color: khaki;margin-bottom: 200px;">
+        <table class="table table-striped">
+            <thead>
+              <tr class="table-active">
+                <th scope="col">Sno.</th>
+                <th scope="col">Functions</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td><a class="mytext" href="uploadStudyMaterial"><b style="font-size:1vw;" title="UPLOAD STUDY MATERIALS">Upload Material</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td> <a class="mytext" href="questionInput"><b style="font-size:1vw;" title="Want to add questions">Input Question</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td><a class="mytext" href="setQuizTime"><b style="font-size:1vw;" title="Set Quiz Time">Set Quiz Duration</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td><a class="mytext" href="availblePaper"><b style="font-size:1vw;" title="Available ExamPapers">See Available ExamPapers</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td><a class="mytext" href="setLiveExamPaper"><b style="font-size:1vw;" title="Set Live Paper or Quiz">Set Live Paper</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td><a class="mytext" href="viewProfile"><b style="font-size:1vw;" title="ViewProfile">MY PROFILE</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td><a class="mytext" href="facultylogout"><b style="font-size:1vw;" title="Logout">LOGOUT</b></a></td>
+                <td>N/A</td>
+                <td><p style="font-size: 1vw;">{{profile.email}} </p></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <br>
+    </div>
+    <footer class="fixed-bottom">
+        <div class="container">
+            <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6" style="text-align: center;">
+            <b class="text-body" style="font-size: large;"> CopyRight to</b><a href="https://www.onlineexambuilder.com/knowledge-center/exam-knowledge-center/how-online-examination-system-works/item10244"> OnlineExamPortal</a><a href="https://www.facebook.com/"> With Us</a>
+            </div>
+            <div class="col-3"></div>
+          </div>
+        </div>
+      </footer>
+    <body>
+        
+    </body>
+    <style>
+        a.mytext {
+      text-underline-position: below;
+      font-style: italic;
+      font: outline;
+      text-align: center;
+    display: inline-block;
+    }
+        body{
+            background-image: url(https://cdn.pixabay.com/photo/2014/05/02/21/49/home-office-336373__340.jpg);
+            background-size: cover;
+        }
+    </style>
+</html>
+
+
+{% endblock%}

@@ -1,0 +1,11 @@
+{% extends 'student/basic.html' %}
+{% block title %} Student {% endblock%}
+{% block body %}
+
+{% for obj in books %}
+
+<p>{{obj.materialTag}}   {{obj.title}}      
+    <a href="{{obj.materialFile.url}}">download {{obj.title}}</a> </p> <br>
+{% endfor %}
+
+{% endblock%}

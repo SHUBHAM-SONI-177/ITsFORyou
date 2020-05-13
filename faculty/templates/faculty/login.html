@@ -1,0 +1,104 @@
+{%extends 'faculty/basic.html' %}
+{% block  title %} Faculty-Login
+{% endblock %}
+{% block  css %}
+
+
+#temp{
+  display: inline-block;
+margin-top:10%;
+margin-left: 33%;
+margin-right:25%;
+ width: 25%;
+}
+    
+
+    
+{% endblock %}
+{% block  body %}
+
+
+<script type="text/javascript">
+  function preventBack() { window.history.forward(); }
+  setTimeout("preventBack()", 0);
+  window.onunload = function () { null };
+</script>
+  
+
+<div class="container" style="margin-bottom: 100px;">
+  <div class="row">
+    <div class="col-sm-3 col-md-3 col-xs-12"></div>
+    <div class="col-sm-6 col-md-6 col-xs-12 ">
+      <form class="myform shadow-lg" id='temp' action="handlelogin" method="POST" style="border-radius: 20px;">
+          {% csrf_token %}
+          <br>
+          <div class= "box">
+          <label class="mytext" for="email"><b>Email:&emsp;&ensp;&nbsp;&nbsp;&emsp;</b></label>
+          <input style="background: none;border-bottom: black;" class="mybut" type="email" placeholder="Enter Email" name="email" required>
+        </div>
+          <br><br>
+          <div class="box">
+          <label class="mytext" for="password"><b>Password:&emsp;</b></label>
+          <input style="background: none;border-bottom: black;; " type="password" placeholder="Enter Password" name="password" required>
+        </div>
+          <br><br><br>
+          
+        <div class="pt=3"><button type="submit" class="btn btn-block btn-outline-primary" style="border-radius: 10px;">Submit</button></div>
+        
+      </form>
+    </div>
+    <div class="col-sm-3 col-md-3 col-xs-12"></div>
+  </div>
+</div>
+<div class="mainPitch" style="position:absolute; top: 10%;right: 46%;left: 45%;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6" style="text-align:center;">
+        <img width="100" src="https://softwaresuggest.imgix.net/software_logo/1495539705_followclass-192_mid.png" alt=""><br><br>
+        <div class="mainAction"><a class="rounded" style="padding: 10%; font-size: 2vw; background-color: blanchedalmond;" >LOGIN</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="fixed-bottom">
+  <div class="container">
+      <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6" style="text-align: center;">
+      <b class="text-white" style="font-size: large;"> CopyRight to</b><a href="https://www.onlineexambuilder.com/knowledge-center/exam-knowledge-center/how-online-examination-system-works/item10244"> OnlineExamPortal</a><a href="https://www.facebook.com/"> With Us</a>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</footer>
+<style>
+  body{
+    background-image: url(https://www.stockvault.net/data/2007/03/01/101322/thumb16.jpg);
+    background-size: cover;
+    
+  }
+  form.myform{
+    margin-top: 200px;
+    padding-left: 25px;
+    padding-top: 50px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+  }
+  .box input{
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-style: oblique;
+    color: black;
+  }
+  .box{
+    border-bottom: 2px solid black;
+  }
+  ::placeholder{
+    color: white;
+    text-align: center;
+  }
+</style>
+
+{% endblock %}

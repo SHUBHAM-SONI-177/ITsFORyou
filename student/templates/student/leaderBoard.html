@@ -1,0 +1,84 @@
+{% extends 'student/basic.html' %}
+{% block title %} Student {% endblock%}
+
+{%block body %}
+<div class="container-fluid">
+  <div class="row">
+            <div class="col-4" style="background-color: darkslategrey ;padding-top: 15px;">
+                <input style="float: left;" class="btn-outline-secondary" style="border-radius: 20px;padding: 5px;"  type="button" value="Back" onclick="history.back()"/>
+            </div>
+            <div class="col-3" style="background-color: darkslategrey ;text-align: center;"><br>
+              
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+              <a href="studentpage" title="Home" class="text-light" style="float: left;"><i title="HOME" class="fa fa-home fa-2x"></i></a>
+            </div>
+          </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a href="viewProfile" class="text-light" style="float: right;"><i  title="ViewProfile" class="fa fa-user fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="col-2" style="background-color: darkslategrey ;text-align: center;">
+                <br>
+                <h2 style="font-size: 2vw">Date: <span id="datetime"></span></h2>
+
+                <script>
+                    var dt = new Date();
+                    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+                </script>
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a class="mytext" href="studentlogout"  title="Logout"><i class="fa fa-sign-out fa-2x"></i></a>
+              </div>
+            </div>
+        </div>
+</div>
+
+<div class="container shadow-lg rounded" style="padding: 100px;margin-top: 100px;margin-bottom: 100px;">
+  <h1 style="text-align: center;border-bottom: 2px solid black;">All Live Exams Going On</h1><br><br><br>
+<form class="was-validated" action="handleLeaderBoard" method="POST">
+    {% csrf_token %}
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Sno.</th>
+          <th scope="col">PaperID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for obj in paperID %} 
+          <tr>
+            <td class="counterCe"></th>
+            <td>
+                <div class="custom-control custom-radio">
+                  <input  value="{{obj.paperID}}" type="radio" class="custom-control-input" id="{{forloop.counter}}" name="paperID" required>
+                  <label class="custom-control-label" for="{{forloop.counter}}">{{obj.paperID}}</label>
+                </div>
+            </td>
+            <td><p>{{obj.paperDate}}</p></td>
+            <td><p>{{obj.quizTime}}</p></td>
+          </tr>
+        {% endfor %} 
+      </tbody>
+    </table>
+    <br><br><br>
+      <button type="submit" class="btn btn-block btn-primary">Submit</button>
+  </form>
+</div>
+<style>
+  table {
+ counter-reset: tableCount;     
+}
+.counterCe:before {              
+ content: counter(tableCount); 
+ counter-increment: tableCount; 
+}
+</style>
+
+
+{% endblock%}

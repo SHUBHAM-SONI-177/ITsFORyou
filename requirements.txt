@@ -1,0 +1,11 @@
+distro-info===0.21ubuntu4
+dj-database-url==0.5.0
+Django==3.0.4
+django-heroku==0.3.1
+gunicorn==20.0.4
+passlib==1.7.2
+psycopg2==2.7.5
+PyJWT==1.7.0
+pylint==2.2.2
+virtualenv==15.1.0
+whitenoise==5.0.1

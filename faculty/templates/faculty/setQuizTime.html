@@ -1,0 +1,59 @@
+{% extends 'faculty/basic.html' %}
+{% block title %} faculty {% endblock%}
+
+{%block body %}
+<div class="container-fluid">
+  <div class="row">
+            <div class="col-4" style="background-color: darkslategrey ;padding-top: 15px;">
+                <input style="float: left;" class="btn-outline-secondary" style="border-radius: 20px;padding: 5px;"  type="button" value="Back" onclick="history.back()"/> 
+            </div>
+            <div class="col-3" style="background-color: darkslategrey ;text-align: center;"><br>
+              
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+              <a href="facultypage" title="Home" class="text-light" style="float: left;"><i title="HOME" class="fa fa-home fa-2x"></i></a>
+            </div>
+          </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a href="viewProfile" class="text-light" style="float: right;"><i  title="ViewProfile" class="fa fa-user fa-2x"></i></a>
+                </div>
+            </div>
+            <div class="col-2" style="background-color: darkslategrey ;text-align: center;">
+                <br>
+                <h2 style="font-size: 2vw">Date: <span id="datetime"></span></h2>
+
+                <script>
+                    var dt = new Date();
+                    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+                </script>
+            </div>
+            <div class="col-1" style="background-color: darkslategrey ;text-align: center;"><br>
+              <div style="font-size: 1vw">
+                <a class="mytext" href="facultylogout"  title="Logout"><i class="fa fa-sign-out fa-2x"></i></a>
+              </div>
+            </div>
+        </div>
+</div>
+
+
+<div class="container shadow-lg rounded" style="padding: 50px;margin-top: 100px;margin-bottom: 200px;">
+<form method="POST" action="handleSetQuizTime">
+  {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">PaperID</label>
+      <input name="paperID" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter paperID">
+      
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Enter Paper Duration</label>
+      <input name="ashu_time" type="number" class="form-control" id="exampleInputPassword1" placeholder="Please Enter Duration time in minutes">
+    </div><br><br>
+    
+    <button type="submit" class="btn btn-block btn-primary">Submit</button>
+  </form>
+</div>
+
+{% endblock%}
